@@ -9,17 +9,18 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <serenity.version>1.6.3</serenity.version>
+        <java.version>13</java.version>
+
+        <serenity.version>2.1.6</serenity.version>
+
         <junit.version>4.12</junit.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <maven.failsafe.plugin.version>2.19.1</maven.failsafe.plugin.version>
-        <maven.compiler.plugin>3.2</maven.compiler.plugin>
-        <maven.surfire.plugin>2.20.1</maven.surfire.plugin>
 
-        <java.version>1.8</java.version>
-        <serenity.maven.version>1.5.8</serenity.maven.version>
-        <serenity.cucumber.version>1.0.15</serenity.cucumber.version>
-        <webdriver.driver>chrome</webdriver.driver>
+        <serenity.maven.version>2.1.6</serenity.maven.version>
+        <maven.failsafe.plugin.version>2.22.2</maven.failsafe.plugin.version>
+        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+        <maven.surfire.plugin>2.22.2</maven.surfire.plugin>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -27,12 +28,13 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.serenity-bdd</groupId>
-            <artifactId>serenity-core</artifactId>
-            <version>${serenity.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.serenity-bdd</groupId>-->
+<!--            <artifactId>serenity-core</artifactId>-->
+<!--            <version>${serenity.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
@@ -61,6 +63,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven.failsafe.plugin.version}</version>
                 <configuration>
@@ -82,8 +85,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
