@@ -1,8 +1,15 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
+    agents {
+        agent {
+            docker {
+                image 'openjdk:13-alpine'
+            }
+        }
+        agent {
+            docker {
+                image 'maven:3-alpine'
+                args '-v /root/.m2:/root/.m2'
+            }
         }
     }
     stages {
