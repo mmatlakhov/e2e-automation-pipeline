@@ -5,11 +5,6 @@ pipeline {
         }
     }
     stages {
-        stage('Git checkout') { // for display purposes
-            steps {
-                git 'https://github.com/mmatlakhov/e2e-automation-pipeline.git'
-            }
-        }
         stage('Smoke') {
             steps {
                 sh "mvn clean verify -Dtags='type:Smoke'"
@@ -36,9 +31,7 @@ pipeline {
             }
         }
         stage('Integration tests') {
-            steps {
-                build job 'loan-integration-tests'
-            }
+            build job 'loan-integration-tests'
         }
     }
 }
