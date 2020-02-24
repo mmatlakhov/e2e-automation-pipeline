@@ -35,5 +35,10 @@ pipeline {
                 junit '**/target/failsafe-reports/*.xml'
             }
         }
+        stage('Integration tests') {
+            steps {
+                build job 'loan-integration-tests'
+            }
+        }
     }
 }
