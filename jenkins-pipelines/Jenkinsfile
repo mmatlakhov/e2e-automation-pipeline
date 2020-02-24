@@ -1,8 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
+            image 'maven:3-jdk-13'
         }
     }
     stages {
@@ -12,11 +11,6 @@ pipeline {
             }
         }
         stage('Smoke') {
-            agent {
-                docker {
-                    image 'openjdk:13-alpine'
-                }
-            }
             steps {
                 sh "mvn clean verify -Dtags='type:Smoke'"
                 publishHTML (target: [
