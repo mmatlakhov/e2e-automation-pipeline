@@ -31,7 +31,9 @@ pipeline {
             }
         }
         stage('Integration tests') {
-            build job 'loan-integration-tests'
+            steps {
+                build job: 'loan-integration-tests'
+            }
         }
     }
 }
